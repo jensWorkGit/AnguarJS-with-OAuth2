@@ -5,20 +5,20 @@
 </head>
 <body>
 
-    <div id="msg"></div>
+<div id="msg"></div>
 
-    <script src="Scripts/jquery-1.10.2.js"></script>
-    <script src="app/components/oauth/oauth-service.js"></script>
-    <script>
-        // use OAuthService as standalone-service (without angular)
-        var oauthService = new oauth2.OAuthService();
-        if (oauthService.tryLogin()) {
-            $("#msg").html("Success!");
-        }
-        else {
-            $("#msg").html("Was not able to log in!");
-        }
-    </script>
+<script src="Scripts/jquery-1.10.2.js"></script>
+<script src="app/components/oauth/oauth-service.js"></script>
+<script>
+    // use OAuthService as standalone-service (without angular)
+    var oauthService = new oauth2.OAuthService();
+    if(oauthService.tryLogin()) {
+        $("#msg").html("Success!");
+    }
+    else {
+        $("#msg").html("Was not able to log in!");
+    }
+</script>
 
 </body>
 </html>
