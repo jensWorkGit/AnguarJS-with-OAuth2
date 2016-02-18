@@ -11,11 +11,11 @@
                 oauthService.createLoginUrl(scope.state).then(function (url) {
                     element.attr("onclick", "location.href='" + url + "'");
                 })
-                .catch(function (error) {
-                    $log.error("oauthLoginButton-directive error");
-                    $log.error(error);
-                    throw error;
-                });
+                    .catch(function (error) {
+                        $log.error("oauthLoginButton-directive error");
+                        $log.error(error);
+                        throw error;
+                    });
             }
         };
     });
@@ -29,11 +29,11 @@
             link: function (scope, element, attrs) {
 
                 window.onOAuthCallback = function (requestedUrl) {
-                    if (scope.callback) {
+                    if(scope.callback) {
                         scope.callback();
                     }
 
-                    if (requestedUrl) {
+                    if(requestedUrl) {
                         $timeout(function () {
                             $location.url(requestedUrl.substr(1));
                         }, 0);
@@ -41,7 +41,9 @@
                 }
 
                 oauthService.createLoginUrl(scope.state).then(function (url) {
-                    var html = "<iframe src='" + url + "' height='400' width='400' id='oauthFrame' class='oauthFrame'></iframe>";
+                    var html = "<iframe src='" +
+                               url +
+                               "' height='400' width='400' id='oauthFrame' class='oauthFrame'></iframe>";
                     element.html(html);
                 }).catch(function (error) {
                     $log.error("oauthLoginForm-directive error");
